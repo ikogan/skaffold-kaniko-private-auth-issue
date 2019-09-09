@@ -1,0 +1,24 @@
+apiVersion: skaffold/v1beta13
+kind: Config
+build:
+    artifacts:
+        - image: docker.my.private.registry.org/middleware/test
+          kaniko:
+              cache: {}
+              buildContext:
+                localDir: {}
+    cluster:
+        dockerConfig:
+            secretName: kaniko-secret
+        namespace: middleware-poc
+deploy:
+    kustomize:
+        path: kubernetes/base
+profiles:
+    - name: poc
+      deploy:
+          kustomize:
+              path: kubernetes/poc
+              flags:
+                  global:
+                      - --namespace=middleware-poc

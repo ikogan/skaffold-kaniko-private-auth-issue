@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: middleware-test
+spec:
+    selector:
+        matchLabels:
+            app: middleware-test
+        spec:
+            containers:
+                - name: app
+                  image: docker.my.private.registry.org/middleware/test
+                  ports:
+                      - containerPort: 3000
+                  envFrom:
+                      - configMapRef:
+                          name: config-middleware-test
+            imagePullSecrets:
+                - name: private
+ 

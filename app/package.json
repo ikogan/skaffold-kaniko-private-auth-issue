@@ -1,0 +1,17 @@
+{
+  "name": "server-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/good": "^8.2.1",
+    "@hapi/good-console": "^8.1.1",
+    "@hapi/good-squeeze": "^5.2.1",
+    "@hapi/hapi": "^18.3.2"
+  }
+}
