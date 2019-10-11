@@ -1,20 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: middleware-test
+    name: skaffold-kaniko-test
 spec:
     selector:
         matchLabels:
-            app: middleware-test
+            app: skaffold-kaniko-test
+    template:
+        metadata:
+            labels:
+                app: skaffold-kaniko-test
         spec:
             containers:
                 - name: app
-                  image: docker.my.private.registry.org/middleware/test
+                  image: docker.my.private.registry/middleware/test
                   ports:
                       - containerPort: 3000
                   envFrom:
                       - configMapRef:
-                          name: config-middleware-test
+                          name: config-skaffold-test
             imagePullSecrets:
                 - name: private
- 
